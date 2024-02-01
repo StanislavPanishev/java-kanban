@@ -1,8 +1,10 @@
+package task;
+
 public class Task {
-    protected int id;
-    protected String title;
-    protected String description;
-    protected Status status;
+    public int id;
+    public String title;
+    public String description;
+    public Status status;
 
     public Task(String title, String description, Status status) {
         this.title = title;
@@ -17,8 +19,20 @@ public class Task {
         this.status = status;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -27,14 +41,6 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Status getStatus() {
@@ -47,7 +53,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "\n" + "Task{" +
+        return "\n" + "task.Task{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +

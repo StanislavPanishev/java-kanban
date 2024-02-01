@@ -1,15 +1,17 @@
+package manager;
+import task.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TaskManager {
-    int idNumber = 0;
+    public int idNumber = 0;
 
-    private HashMap<Integer, Task> tasks = new HashMap<>();
-    private HashMap<Integer, Epic> epics = new HashMap<>();
-    private HashMap<Integer, Subtask> subtasks = new HashMap<>();
+    private final HashMap<Integer, Task> tasks = new HashMap<>();
+    private final HashMap<Integer, Epic> epics = new HashMap<>();
+    private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
 
-    private int id(Task task) {
+    public int id(Task task) {
         task.setId(++idNumber);
         return idNumber;
     }
@@ -28,7 +30,6 @@ public class TaskManager {
         int epicIdOfSubTask = subtask.getEpicID();
         Epic epic = epics.get(epicIdOfSubTask);
         if (epic != null) {
-            epic.addIdOfSubtasks(subtask);
             changeEpicStatus(epic);
         }
     }
@@ -153,7 +154,8 @@ public class TaskManager {
     }
 
     private void changeEpicStatus(Epic epic) {
-        ArrayList<Subtask> updatedListOfSubtasks = getSubtasksList();
+        int epicID = epic.getId();
+        ArrayList<Subtask> updatedListOfSubtasks = subtaskList(epicID);
         int doneCounter = 0;
         int newCounter = 0;
         for (Subtask subtask : updatedListOfSubtasks) {
@@ -175,6 +177,26 @@ public class TaskManager {
         } else {
             epic.setStatus(Status.IN_PROGRESS);
         }
+    }
+
+    public int getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(int idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public HashMap<Integer, Task> getTasks() {
+        return tasks;
+    }
+
+    public HashMap<Integer, Epic> getEpics() {
+        return epics;
+    }
+
+    public HashMap<Integer, Subtask> getSubtasks() {
+        return subtasks;
     }
 }
 
