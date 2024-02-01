@@ -20,10 +20,10 @@ public class Subtask extends Task {
     public String toString() {
         return "\n" + "task.Subtask{" +
                 "epicID=" + epicID +
-                ", id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
+                ", id=" + getId() +
+                ", title='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", status=" + getStatus() +
                 '}';
     }
 }

@@ -1,10 +1,10 @@
 package task;
 
 public class Task {
-    public int id;
-    public String title;
-    public String description;
-    public Status status;
+    private int id;
+    private String title;
+    private String description;
+    private Status status;
 
     public Task(String title, String description, Status status) {
         this.title = title;

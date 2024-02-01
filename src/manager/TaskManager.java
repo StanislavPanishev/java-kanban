@@ -140,6 +140,12 @@ public class TaskManager {
         subtasks.remove(idNumber);
     }
 
+    public void deleteAll() {
+        deleteTask();
+        deleteEpic();
+        deleteSubtask();
+    }
+
     // 3. Дополнительные методы:
     //a. Получение списка всех подзадач определённого эпика.
     public ArrayList<Subtask> subtaskList(int idNumber) {
@@ -177,6 +183,12 @@ public class TaskManager {
         } else {
             epic.setStatus(Status.IN_PROGRESS);
         }
+    }
+
+    public void printAll() {
+        System.out.println(getTasksList());
+        System.out.println(getEpicsList());
+        System.out.println(getSubtasksList());
     }
 
     public int getIdNumber() {
