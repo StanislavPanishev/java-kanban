@@ -4,7 +4,7 @@ import task.*;
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        TaskManager taskManager = new InMemoryTaskManager();
         Task task1 = new Task("Спринт 3", "Повторить матерал", Status.NEW);
         taskManager.saveTask(task1);
         Task task2 = new Task("Спринт 4", "Выполнить ТЗ", Status.NEW);
