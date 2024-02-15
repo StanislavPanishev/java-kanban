@@ -1,7 +1,5 @@
 package task;
 
-import manager.InMemoryTaskManager;
-import manager.TaskManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -31,11 +29,4 @@ class EpicTest {
         Assertions.assertEquals(0, epic1.getSubtasks().size(), "Id Epic занесен в список SubTasksId");
     }
 
-    @Test
-    void getSubtasks() {
-    }
-
-    @Test
-    void setSubtasks() {
-    }
 }

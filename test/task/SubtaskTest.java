@@ -29,11 +29,4 @@ class SubtaskTest {
         Assertions.assertEquals(1, subtask2.getEpicID(), "Subtask можно сделать своим же эпиком");
     }
 
-    @Test
-    void getEpicID() {
-    }
-
-    @Test
-    void setEpicID() {
-    }
 }

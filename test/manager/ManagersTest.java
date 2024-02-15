@@ -16,12 +16,4 @@ class ManagersTest {
     public void returnsInitializedAndReadyInstancesOfManagersGetDefaultHistory() {
         Assertions.assertNotNull(Managers.getDefaultHistory(), "InMemoryHistoryManager is null");
     }
-
-    @Test
-    void getDefault() {
-    }
-
-    @Test
-    void getDefaultHistory() {
-    }
 }

@@ -5,8 +5,8 @@ import task.Subtask;
 import task.Task;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface TaskManager {
 
@@ -20,11 +20,11 @@ public interface TaskManager {
 
     void saveSubtask(Subtask subtask);
 
-    ArrayList<Task> getTasksList();
+    List<Task> getTasksList();
 
     ArrayList<Epic> getEpicsList();
 
-    ArrayList<Subtask> getSubtasksList();
+    List<Subtask> getSubtasksList();
 
     //  b. Удаление всех задач.
     void deleteTask();
@@ -75,9 +75,9 @@ public interface TaskManager {
 
     void setIdNumber(int idNumber);
 
-    HashMap<Integer, Task> getTasks();
+    Map<Integer, Task> getTasks();
 
-    HashMap<Integer, Epic> getEpics();
+    Map<Integer, Epic> getEpics();
 
-    HashMap<Integer, Subtask> getSubtasks();
+    Map<Integer, Subtask> getSubtasks();
 }

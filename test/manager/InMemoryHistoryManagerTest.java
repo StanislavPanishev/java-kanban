@@ -1,11 +1,8 @@
 package manager;
 
 import org.junit.jupiter.api.Test;
-import task.Epic;
 import task.Status;
 import task.Task;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,10 +19,4 @@ class InMemoryHistoryManagerTest {
         assertNotNull(history, "История не пустая.");
         assertEquals(1, history.size(), "История не пустая.");
     }
-
-
-    @Test
-    void getHistory() {
-    }
-
 }

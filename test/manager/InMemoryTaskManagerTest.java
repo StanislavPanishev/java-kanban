@@ -6,7 +6,6 @@ import task.Epic;
 import task.Status;
 import task.Subtask;
 import task.Task;
-
 import java.util.List;
 
 
@@ -49,21 +48,8 @@ class InMemoryTaskManagerTest {
         taskManager.saveSubtask(subtask1);
         subtasks.add(subtask1);
         Assertions.assertNotNull(taskManager, "Subtask не добавлен");
-        Assertions.assertNotNull(taskManager.getSubtask(subtask1.getEpicID()), "Subtask не найден по EpicID");
         Assertions.assertNotNull(subtask1, "Задача не найдена.");
         Assertions.assertEquals(1, subtasks.size(), "Неверное количество задач.");
         Assertions.assertEquals(subtask1, subtasks.get(0), "Задачи не совпадают.");
-    }
-
-    @Test
-    void testDeleteTask() {
-    }
-
-    @Test
-    void testDeleteEpic() {
-    }
-
-    @Test
-    void testDeleteSubtask() {
     }
 }

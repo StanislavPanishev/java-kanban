@@ -5,15 +5,16 @@ import task.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
-    public int idNumber = 0;
+    private static int idNumber = 0;
 
-    private final HashMap<Integer, Task> tasks = new HashMap<>();
-    private final HashMap<Integer, Epic> epics = new HashMap<>();
-    private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
+    private final Map<Integer, Task> tasks = new HashMap<>();
+    private final Map<Integer, Epic> epics = new HashMap<>();
+    private final Map<Integer, Subtask> subtasks = new HashMap<>();
 
-    HistoryManager historyManager = Managers.getDefaultHistory();
+    private final HistoryManager historyManager = Managers.getDefaultHistory();
 
 
     @Override
@@ -52,7 +53,8 @@ public class InMemoryTaskManager implements TaskManager {
     // a. Получение списка всех задач.
 
     @Override
-    public ArrayList<Task> getTasksList() {
+
+    public List<Task> getTasksList() {
         return new ArrayList<>(tasks.values());
     }
 
@@ -62,7 +64,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Subtask> getSubtasksList() {
+    public List<Subtask> getSubtasksList() {
         return new ArrayList<>(subtasks.values());
     }
 
@@ -241,21 +243,21 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
+        InMemoryTaskManager.idNumber = idNumber;
     }
 
     @Override
-    public HashMap<Integer, Task> getTasks() {
+    public Map<Integer, Task> getTasks() {
         return tasks;
     }
 
     @Override
-    public HashMap<Integer, Epic> getEpics() {
+    public Map<Integer, Epic> getEpics() {
         return epics;
     }
 
     @Override
-    public HashMap<Integer, Subtask> getSubtasks() {
+    public Map<Integer, Subtask> getSubtasks() {
         return subtasks;
     }
 }

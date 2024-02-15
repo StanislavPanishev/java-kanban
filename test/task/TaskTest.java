@@ -13,13 +13,4 @@ class TaskTest {
         task2.setId(1);
         Assertions.assertEquals(task1, task2, "Экземпляры класса Task не равны друг другу");
     }
-
-    @Test
-    void getId() {
-    }
-
-    @Test
-    void setId() {
-    }
-
 }
