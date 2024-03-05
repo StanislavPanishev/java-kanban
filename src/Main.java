@@ -20,9 +20,6 @@ public class Main {
         Subtask subtask3 = new Subtask("Переезд", "Собрать коробки", Status.NEW, 2);
         taskManager.saveSubtask(subtask3);
 
-        System.out.println("a. Получение списка всех задач.");
-        taskManager.printAll();
-
         System.out.println("c. Получение по идентификатору.");
         System.out.println(taskManager.getTask(1));
         System.out.println(taskManager.getTask(2));
@@ -54,9 +51,7 @@ public class Main {
 
         taskManager.printAll();
 
-        System.out.println("b. Удаление всех задач.");
         taskManager.deleteAll();
-        taskManager.printAll();
 
         System.out.println("d. Создание. Сам объект должен передаваться в качестве параметра.");
         Task newTask1 = taskManager.createTask(task1);
@@ -82,10 +77,9 @@ public class Main {
         System.out.println(taskManager.subtaskList(1));
 
         System.out.println("f. Удаление по идентификатору.");
-        taskManager.deleteTask(8);
-        taskManager.deleteEpic(11);
-        taskManager.deleteSubtask(12);
-        taskManager.deleteSubtask(13);
+        taskManager.deleteTask(1);
+        taskManager.deleteTask(2);
+        taskManager.deleteEpic(3);
 
         taskManager.printAll();
 
