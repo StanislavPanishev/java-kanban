@@ -1,10 +1,10 @@
 package manager;
 
-class Node <T> {
+class Node<T> {
 
-    public T data;
-    public Node<T> next;
-    public Node<T> prev;
+    protected T data;
+    protected Node<T> next;
+    protected Node<T> prev;
 
     public Node(Node<T> prev, T data, Node<T> next) {
         this.data = data;
