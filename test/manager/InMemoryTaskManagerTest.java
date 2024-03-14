@@ -6,11 +6,11 @@ import task.Epic;
 import task.Status;
 import task.Subtask;
 import task.Task;
+
 import java.util.List;
 
 
 class InMemoryTaskManagerTest {
-
     //проверьте, что InMemoryTaskManager действительно добавляет задачи разного типа и может найти их по id;
     @Test
     void shouldSaveTaskAndCanFindThemById() {
@@ -51,5 +51,29 @@ class InMemoryTaskManagerTest {
         Assertions.assertNotNull(subtask1, "Задача не найдена.");
         Assertions.assertEquals(1, subtasks.size(), "Неверное количество задач.");
         Assertions.assertEquals(subtask1, subtasks.get(0), "Задачи не совпадают.");
+    }
+
+    @Test
+    public void checkWhenDeletingSubtask() {
+        TaskManager taskManager = new InMemoryTaskManager();
+        List<Epic> epics = taskManager.getEpicsList();
+        List<Subtask> subtasks = taskManager.getSubtasksList();
+        Epic epic1 = new Epic("Важный эпик 1", "Подготовка к переезду", Status.NEW);
+        taskManager.saveEpic(epic1);
+        epics.add(epic1);
+        Subtask subtask1 = new Subtask("Подготовка к переезду", "Полить кота", Status.NEW, 1);
+        taskManager.saveSubtask(subtask1);
+        subtasks.add(subtask1);
+
+        Assertions.assertEquals(1, subtasks.size(), "Неверное количество подзадач");
+        Assertions.assertEquals(2, subtasks.get(0).getId(), "Неверный id подзадачи");
+
+        taskManager.deleteSubtask(subtask1.getId());
+        epics = taskManager.getEpicsList();
+        subtasks = taskManager.getSubtasksList();
+
+        Assertions.assertEquals(1, epics.size(), "Неверное количество эпиков");
+        Assertions.assertEquals(0, subtasks.size(), "Неверное количество подзадач");
+        Assertions.assertEquals(0, epics.get(0).getSubtasks().size(), "Неверное количество подзадач в эпике");
     }
 }

@@ -168,23 +168,27 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void deleteTask(int idNumber) {
         tasks.remove(idNumber);
+        historyManager.remove(idNumber);
     }
 
     @Override
     public void deleteEpic(int idNumber) {
         epics.remove(idNumber);
+        historyManager.remove(idNumber);
     }
 
     @Override
     public void deleteSubtask(int idNumber) {
         subtasks.remove(idNumber);
+        historyManager.remove(idNumber);
     }
 
     @Override
     public void deleteAll() {
-        deleteTask();
-        deleteEpic();
-        deleteSubtask();
+        tasks.clear();
+        epics.clear();
+        subtasks.clear();
+
     }
 
     // 3. Дополнительные методы:
