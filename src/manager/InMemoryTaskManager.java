@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
-    private static int idNumber = 0;
+    protected static int idNumber = 0;
 
-    private final Map<Integer, Task> tasks = new HashMap<>();
-    private final Map<Integer, Epic> epics = new HashMap<>();
-    private final Map<Integer, Subtask> subtasks = new HashMap<>();
+    protected final Map<Integer, Task> tasks = new HashMap<>();
+    protected final Map<Integer, Epic> epics = new HashMap<>();
+    protected final Map<Integer, Subtask> subtasks = new HashMap<>();
 
-    private final HistoryManager historyManager = Managers.getDefaultHistory();
+    final HistoryManager historyManager = Managers.getDefaultHistory();
 
 
     @Override
@@ -53,7 +53,6 @@ public class InMemoryTaskManager implements TaskManager {
     // a. Получение списка всех задач.
 
     @Override
-
     public List<Task> getTasksList() {
         return new ArrayList<>(tasks.values());
     }

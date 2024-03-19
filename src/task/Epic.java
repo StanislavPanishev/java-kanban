@@ -8,11 +8,19 @@ public class Epic extends Task {
 
     public Epic(String title, String description, Status status) {
         super(title, description, status);
+        this.taskType = TaskType.EPIC;
     }
 
     public Epic(String title, String description, Status status, int id, List<Integer> subtasks) {
         super(title, description, status, id);
         this.subtasks = subtasks;
+        this.taskType = TaskType.EPIC;
+    }
+
+    public Epic(int id, TaskType taskType, String title, Status status, String description) {
+        super(title, description, status, id);
+        this.subtasks = subtasks;
+        this.taskType = TaskType.EPIC;
     }
 
     public List<Integer> getSubtasks() {
