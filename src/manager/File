@@ -1,0 +1,10 @@
+id,type,title,status,description,epicId
+1,TASK,Спринт 3,DONE,Повторить матерал
+2,TASK,Спринт 4,IN_PROGRESS,Выполнить ТЗ
+3,EPIC,Важный эпик 1,NEW,Подготовка к переезду
+4,EPIC,Важный эпик 2,NEW,Переезд
+5,SUBTASK,Подготовка к переезду,DONE,Полить кота,1
+6,SUBTASK,Подготовка к переезду,IN_PROGRESS,Покормить катус,1
+7,SUBTASK,Переезд,IN_PROGRESS,Собрать коробки,2
+
+1,2,3,4,5,6,7

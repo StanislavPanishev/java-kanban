@@ -3,15 +3,17 @@ package task;
 import java.util.Objects;
 
 public class Task {
-    private int id;
+    protected int id;
     private String title;
     private String description;
     private Status status;
+    protected TaskType taskType;
 
     public Task(String title, String description, Status status) {
         this.title = title;
         this.description = description;
         this.status = status;
+        this.taskType = TaskType.TASK;
     }
 
     public Task(String title, String description, Status status, int id) {
@@ -19,6 +21,19 @@ public class Task {
         this.title = title;
         this.description = description;
         this.status = status;
+        this.taskType = TaskType.TASK;
+    }
+
+    public Task(int id, TaskType taskType, String title, Status status, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.taskType = TaskType.TASK;
+    }
+
+    public TaskType getTaskType() {
+        return taskType;
     }
 
     public int getId() {
