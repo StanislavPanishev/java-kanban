@@ -80,4 +80,6 @@ public interface TaskManager {
     Map<Integer, Epic> getEpics();
 
     Map<Integer, Subtask> getSubtasks();
+
+    List<Task> getPrioritizedTasks();
 }
