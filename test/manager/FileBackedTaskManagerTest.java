@@ -21,6 +21,7 @@ class FileBackedTaskManagerTest extends TaskManagerTest<FileBackedTaskManager> {
         initTasks();
 
     }
+
     @Test
     public void shouldLoadFromFile() throws IOException {
         taskManager.createTask(task1);

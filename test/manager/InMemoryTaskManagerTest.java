@@ -19,6 +19,7 @@ class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
     public void initManager() {
         taskManager = (InMemoryTaskManager) Managers.getDefault();
     }
+
     //проверьте, что InMemoryTaskManager действительно добавляет задачи разного типа и может найти их по id;
     @Test
     void shouldSaveTaskAndCanFindThemById() {

@@ -47,6 +47,7 @@ public class Task {
         this.startTime = startTime;
         this.duration = duration;
     }
+
     public void setDuration(Duration duration) {
         this.duration = duration;
     }
@@ -62,6 +63,7 @@ public class Task {
     public LocalDateTime getStartTime() {
         return startTime;
     }
+
     public LocalDateTime getEndTime() {
         return startTime.plus(duration);
     }
