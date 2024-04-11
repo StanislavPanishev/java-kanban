@@ -1,6 +1,5 @@
 package manager;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
 import task.*;
 
 import java.util.*;
@@ -29,7 +28,7 @@ public class InMemoryTaskManager implements TaskManager {
             final Task nextTask = prioritizedTask.get(i + 1);
 
             if (currentTask.getEndTime().isAfter(nextTask.getStartTime())) {
-                throw new DataValidationException("Задачи выполняются одновременно.");
+                throw new RuntimeException("Задачи выполняются одновременно.");
             }
         }
 
