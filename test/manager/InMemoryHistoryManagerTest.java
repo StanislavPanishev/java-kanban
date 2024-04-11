@@ -30,7 +30,7 @@ class InMemoryHistoryManagerTest {
         Task task1 = new Task("Спринт 3", "Повторить матерал", Status.NEW,
                 LocalDateTime.now(), Duration.ofMinutes(15));
         Task task2 = new Task("Спринт 3", "Повторить матерал", Status.NEW,
-                LocalDateTime.now(), Duration.ofMinutes(15));
+                LocalDateTime.now().plusHours(1), Duration.ofMinutes(15));
         historyManager.saveTask(task1);
         historyManager.saveTask(task2);
         historyManager.getTask(task1.getId());
