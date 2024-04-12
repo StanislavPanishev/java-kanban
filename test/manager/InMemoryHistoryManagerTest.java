@@ -14,7 +14,7 @@ class InMemoryHistoryManagerTest {
 
     // убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных.
     @Test
-    void addTaskSaveThePreviousVersionAndData() {
+    protected void addTaskSaveThePreviousVersionAndData() {
         HistoryManager historyManager = new InMemoryHistoryManager();
         Task task = new Task("Спринт 3", "Повторить матерал", Status.NEW,
                 LocalDateTime.now(), Duration.ofMinutes(15));
@@ -25,7 +25,7 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    void getRidOfRepeatViewsInTheHistory() {
+    protected void getRidOfRepeatViewsInTheHistory() {
         TaskManager historyManager = new InMemoryTaskManager();
         Task task1 = new Task("Спринт 3", "Повторить матерал", Status.NEW,
                 LocalDateTime.now(), Duration.ofMinutes(15));
@@ -42,7 +42,7 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    void removeTaskFromTheHistory() {
+    protected void removeTaskFromTheHistory() {
         TaskManager historyManager = new InMemoryTaskManager();
         Task task1 = new Task("Спринт 3", "Повторить матерал", Status.NEW,
                 LocalDateTime.now(), Duration.ofMinutes(15));

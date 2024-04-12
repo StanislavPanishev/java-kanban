@@ -16,7 +16,7 @@ public class Task {
 
     protected LocalDateTime startTime;
 
-    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    protected static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
     public Task(String title, String description, Status status, LocalDateTime startTime, Duration duration) {
         this.title = title;

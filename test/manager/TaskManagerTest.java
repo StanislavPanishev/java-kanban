@@ -17,19 +17,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class TaskManagerTest<T extends TaskManager> {
 
-    T taskManager;
+    protected T taskManager;
 
-    Task task1;
-    Task task2;
-    Task task3;
+    protected Task task1;
+    protected Task task2;
+    protected Task task3;
 
-    Epic epic1;
-    Epic epic2;
-    Epic epic3;
+    protected Epic epic1;
+    protected Epic epic2;
+    protected Epic epic3;
 
-    Subtask subtask1;
-    Subtask subtask2;
-    Subtask subtask3;
+    protected Subtask subtask1;
+    protected Subtask subtask2;
+    protected Subtask subtask3;
 
     @BeforeEach
     public void initTasks() {

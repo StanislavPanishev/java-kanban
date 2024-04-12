@@ -22,7 +22,7 @@ class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
 
     //проверьте, что InMemoryTaskManager действительно добавляет задачи разного типа и может найти их по id;
     @Test
-    void shouldSaveTaskAndCanFindThemById() {
+    protected void shouldSaveTaskAndCanFindThemById() {
         TaskManager taskManager = new InMemoryTaskManager();
         final List<Task> tasks = taskManager.getTasksList();
         Task task1 = new Task("Спринт 3", "Повторить матерал", Status.NEW,
@@ -37,7 +37,7 @@ class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
     }
 
     @Test
-    void shouldSaveEpicAndCanFindThemById() {
+    protected void shouldSaveEpicAndCanFindThemById() {
         TaskManager taskManager = new InMemoryTaskManager();
         final List<Epic> epics = taskManager.getEpicsList();
         Epic epic1 = new Epic("Важный эпик 1", "Подготовка к переезду", Status.NEW,
@@ -52,7 +52,7 @@ class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
     }
 
     @Test
-    void shouldSaveSubtaskAndCanFindThemByEpicID() {
+    protected void shouldSaveSubtaskAndCanFindThemByEpicID() {
         TaskManager taskManager = new InMemoryTaskManager();
         final List<Subtask> subtasks = taskManager.getSubtasksList();
         Subtask subtask1 = new Subtask("Подготовка к переезду", "Полить кота", Status.NEW, LocalDateTime.now().plusHours(3), Duration.ofMinutes(60), 1);
@@ -65,7 +65,7 @@ class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
     }
 
     @Test
-    public void checkWhenDeletingSubtask() {
+    protected void checkWhenDeletingSubtask() {
         TaskManager taskManager = new InMemoryTaskManager();
         List<Epic> epics = taskManager.getEpicsList();
         List<Subtask> subtasks = taskManager.getSubtasksList();
