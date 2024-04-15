@@ -2,10 +2,7 @@ package manager;
 
 import task.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class InMemoryTaskManager implements TaskManager {
     protected static int idNumber = 0;
@@ -15,6 +12,27 @@ public class InMemoryTaskManager implements TaskManager {
     protected final Map<Integer, Subtask> subtasks = new HashMap<>();
 
     protected final HistoryManager historyManager = Managers.getDefaultHistory();
+
+
+    protected final Set<Task> prioritizedTasks = new TreeSet<>(Comparator.comparing(Task::getStartTime));
+
+    @Override
+    public List<Task> getPrioritizedTasks() {
+        return new ArrayList<>(prioritizedTasks);
+    }
+
+    protected void checkValidation() {
+        final List<Task> prioritizedTask = getPrioritizedTasks();
+        for (int i = 0; i < prioritizedTask.size() - 1; i++) {
+            final Task currentTask = prioritizedTask.get(i);
+            final Task nextTask = prioritizedTask.get(i + 1);
+
+            if (currentTask.getEndTime().isAfter(nextTask.getStartTime())) {
+                throw new RuntimeException("Задачи выполняются одновременно.");
+            }
+        }
+
+    }
 
 
     @Override
@@ -31,12 +49,16 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public void saveTask(Task task) {
         tasks.put(id(task), task);
+        prioritizedTasks.add(task);
+        checkValidation();
     }
 
     @Override
     public void saveEpic(Epic epic) {
         epics.put(id(epic), epic);
         changeEpicStatus(epic);
+        prioritizedTasks.add(epic);
+        checkValidation();
     }
 
     @Override
@@ -47,6 +69,8 @@ public class InMemoryTaskManager implements TaskManager {
         if (epic != null) {
             changeEpicStatus(epic);
         }
+        prioritizedTasks.add(subtask);
+        checkValidation();
     }
 
     // 2. Методы для каждого из типа задач(Задача/Эпик/Подзадача):
@@ -119,23 +143,24 @@ public class InMemoryTaskManager implements TaskManager {
     // d. Создание. Сам объект должен передаваться в качестве параметра.
     @Override
     public Task createTask(Task task) {
-        return new Task(task.getTitle(), task.getDescription(), task.getStatus());
+        return new Task(task.getTitle(), task.getDescription(), task.getStatus(), task.getStartTime(), task.getDuration());
     }
 
     @Override
     public Subtask createSubtask(Subtask subtask) {
-        return new Subtask(subtask.getTitle(), subtask.getDescription(), subtask.getStatus(), subtask.getEpicID());
+        return new Subtask(subtask.getTitle(), subtask.getDescription(), subtask.getStatus(), subtask.getStartTime(), subtask.getDuration(), subtask.getEpicID());
     }
 
     @Override
     public Epic createEpic(Epic epic) {
-        return new Epic(epic.getTitle(), epic.getDescription(), epic.getStatus());
+        return new Epic(epic.getTitle(), epic.getDescription(), epic.getStatus(), epic.getId(), epic.getSubtasks(), epic.getStartTime(), epic.getDuration());
     }
 
     // e. Обновление. Новая версия объекта с верным идентификатором передаётся в виде параметра.
     @Override
     public void updateTask(Task task) {
         tasks.put(task.getId(), task);
+        checkValidation();
     }
 
     @Override
@@ -149,6 +174,7 @@ public class InMemoryTaskManager implements TaskManager {
         if (epic != null) {
             changeEpicStatus(epic);
         }
+        checkValidation();
     }
 
     @Override
@@ -156,11 +182,12 @@ public class InMemoryTaskManager implements TaskManager {
 
         int idUpdatedEpic = epic.getId();
         Status currentEpicStatus = epics.get(idUpdatedEpic).getStatus();
-        Epic newEpic = new Epic(epic.getTitle(), epic.getDescription(), currentEpicStatus, epic.getId(), epic.getSubtasks());
+        Epic newEpic = new Epic(epic.getTitle(), epic.getDescription(), currentEpicStatus, epic.getId(), epic.getSubtasks(), epic.getStartTime(), epic.getDuration());
         if (epics.containsKey(idUpdatedEpic)) {
             epics.put(idUpdatedEpic, newEpic);
             changeEpicStatus(newEpic);
         }
+        checkValidation();
     }
 
     //  f. Удаление по идентификатору.
