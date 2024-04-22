@@ -15,8 +15,8 @@ import java.nio.charset.StandardCharsets;
 
 public class EpicsHandler implements HttpHandler {
 
-    TaskManager taskManager;
-    Gson gson;
+    private TaskManager taskManager;
+    private Gson gson;
 
     public EpicsHandler(TaskManager taskManager, Gson gson) {
         this.taskManager = taskManager;
@@ -93,6 +93,10 @@ public class EpicsHandler implements HttpHandler {
                 responseCode = 200;
                 response = "Задача удалена";
                 break;
+            default:
+                responseCode = 404;
+                response = "Not Found";
+                break;
         }
         httpExchange.sendResponseHeaders(responseCode, 0);
         try (OutputStream os = httpExchange.getResponseBody()) {
@@ -101,12 +105,12 @@ public class EpicsHandler implements HttpHandler {
         System.out.println("Код ответа: " + responseCode + "; тело ответа: " + response);
     }
 
-    boolean checkIdFromPathInManager(String path) {
+    private boolean checkIdFromPathInManager(String path) {
         int epicId = getIdFromPath(path);
         return (taskManager.getEpic(epicId) == null);
     }
 
-    int getIdFromPath(String path) {
+    private int getIdFromPath(String path) {
         return Integer.parseInt(path.split("/")[2]);
     }
 

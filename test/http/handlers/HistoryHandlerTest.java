@@ -23,8 +23,8 @@ import java.time.LocalDateTime;
 class HistoryHandlerTest {
 
     private static final int PORT = 8080;
-    TaskManager taskManager = new InMemoryTaskManager();
-    HttpTaskServer server = new HttpTaskServer();
+    private TaskManager taskManager = new InMemoryTaskManager();
+    private HttpTaskServer server = new HttpTaskServer();
 
     @BeforeEach
     void setUp() {

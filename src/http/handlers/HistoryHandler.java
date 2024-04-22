@@ -11,8 +11,8 @@ import java.nio.charset.StandardCharsets;
 
 public class HistoryHandler implements HttpHandler {
 
-    TaskManager taskManager;
-    Gson gson;
+    private TaskManager taskManager;
+    private Gson gson;
 
     public HistoryHandler(TaskManager taskManager, Gson gson) {
         this.taskManager = taskManager;

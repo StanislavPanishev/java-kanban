@@ -26,9 +26,9 @@ import task.Epic;
 class SubTasksHandlerTest {
 
     private static final int PORT = 8080;
-    TaskManager taskManager = new InMemoryTaskManager();
-    HttpTaskServer server = new HttpTaskServer();
-    Gson gson = HttpTaskServer.getGson();
+    private TaskManager taskManager = new InMemoryTaskManager();
+    private HttpTaskServer server = new HttpTaskServer();
+    private Gson gson = HttpTaskServer.getGson();
 
     @BeforeEach
     void setUp() {
